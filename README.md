@@ -1,2 +1,2 @@
-# RFtest
-RF test framework
+# BaiduRFtest
+Baidu RF test framework
