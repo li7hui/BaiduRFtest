@@ -22,7 +22,12 @@ TEST(FAN,number1)
 	sprintf(cbuf,"cat /sys/switch/fan/");
 	FILE *stream = popen(cbuf,"r");
 	fread(rbuf,sizeof(rbuf),sizeof(char),stream);
-	printf("%s",rbuf);	
+	printf("%s",rbuf);
+	char *pEnd = NULL;	
+	int num = strtol(rbuf,&pEnd,10);
+	if(pEnd !=NULL){
+	ASSERT_TRUE(2 == 1);
+	}//if
 #if 0
     	ASSERT_TRUE(Abs(1) == 1) << "Abs(1)=1";  //ASSERT_TRUE期待结果是true,operator<<输出一些自定义的信息
     	ASSERT_TRUE(Abs(-1) == 1) << "Abs(-1)=1";

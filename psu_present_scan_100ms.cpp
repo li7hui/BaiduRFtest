@@ -23,6 +23,12 @@ TEST(PSU,present_scan_100ms1)
 	FILE *stream = popen(cbuf,"r");
 	fread(rbuf,sizeof(rbuf),sizeof(char),stream);
 	printf("%s",rbuf);	
+	char *p = rbuf;
+	p+= strlen("present soft scan time is");
+	char *pEnd = NULL;
+	int num = strtol(p,&pEnd,10);
+	if(pEnd !=NULL)
+		ASSERT_TRUE(2 == 1); 
 #if 0
     	ASSERT_TRUE(Abs(1) == 1) << "Abs(1)=1";  //ASSERT_TRUE期待结果是true,operator<<输出一些自定义的信息
     	ASSERT_TRUE(Abs(-1) == 1) << "Abs(-1)=1";

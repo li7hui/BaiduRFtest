@@ -15,7 +15,7 @@
 using namespace std; 
 #include<gtest/gtest.h>
 
-TEST(SWITCH_MAC,switch_mac1)
+TEST(BOARD,switch_mac1)
 {
 	char cbuf[128];
 	char rbuf[128];
@@ -23,6 +23,7 @@ TEST(SWITCH_MAC,switch_mac1)
 	FILE *stream = popen(cbuf,"r");
 	fread(rbuf,sizeof(rbuf),sizeof(char),stream);
 	printf("%s",rbuf);
+	ASSERT_EQ(strlen(rbuf),strlen("58:69:6C:FB:21:F8\n"));
 #if 0
     	ASSERT_TRUE(Abs(1) == 1) << "Abs(1)=1";  //ASSERT_TRUE期待结果是true,operator<<输出一些自定义的信息
     	ASSERT_TRUE(Abs(-1) == 1) << "Abs(-1)=1";

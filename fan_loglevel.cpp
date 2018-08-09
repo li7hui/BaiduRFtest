@@ -23,6 +23,11 @@ TEST(FAN,loglevel1)
 	FILE *stream = popen(cbuf,"r");
 	fread(rbuf,sizeof(rbuf),sizeof(char),stream);
 	printf("%s",rbuf);	
+	char *pEnd = NULL;
+	int val = strtol(rbuf,&pEnd,16);
+	if(pEnd != NULL){
+	ASSERT_TRUE(2==1);
+	}
 #if 0
     	ASSERT_TRUE(Abs(1) == 1) << "Abs(1)=1";  //ASSERT_TRUE期待结果是true,operator<<输出一些自定义的信息
     	ASSERT_TRUE(Abs(-1) == 1) << "Abs(-1)=1";

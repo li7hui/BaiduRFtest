@@ -17,12 +17,24 @@ using namespace std;
 
 TEST(THERMAL,temp1)
 {
-	char cbuf[128];
+	char cbuf[4096];
 	char rbuf[4096];
 	sprintf(cbuf,"cat /sys/switch/thermal/temp");
 	FILE *stream = popen(cbuf,"r");
 	fread(rbuf,sizeof(rbuf),sizeof(char),stream);
 	printf("%s",rbuf);	
+	char *p = strstr(rbuf,"cpu");
+	if(p == NULL)
+		ASSERT_TRUE(2 == 1);
+	p = strstr(rbuf,"switch");
+	if(p == NULL)
+		ASSERT_TRUE(2 == 1);
+	p = strstr(rbuf,"wind_in");
+	if(p == NULL)
+		ASSERT_TRUE(2 == 1);
+	p = strstr(rbuf,"wind_out");
+	if(p == NULL)
+		ASSERT_TRUE(2 == 1); 	
 #if 0
     	ASSERT_TRUE(Abs(1) == 1) << "Abs(1)=1";  //ASSERT_TRUE期待结果是true,operator<<输出一些自定义的信息
     	ASSERT_TRUE(Abs(-1) == 1) << "Abs(-1)=1";

@@ -15,7 +15,7 @@
 using namespace std; 
 #include<gtest/gtest.h>
 
-TEST(SERIAL,serial1)
+TEST(BOARD,serial1)
 {
 	char cbuf[128];
 	char rbuf[128];
@@ -23,6 +23,8 @@ TEST(SERIAL,serial1)
 	FILE *stream = popen(cbuf,"r");
 	fread(rbuf,sizeof(rbuf),sizeof(char),stream);
 	printf("%s",rbuf);	
+	int len = strlen(rbuf);
+	ASSERT_GT(len,3);
 #if 0
     	ASSERT_TRUE(Abs(1) == 1) << "Abs(1)=1";  //ASSERT_TRUE期待结果是true,operator<<输出一些自定义的信息
     	ASSERT_TRUE(Abs(-1) == 1) << "Abs(-1)=1";
