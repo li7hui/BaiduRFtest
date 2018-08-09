@@ -15,11 +15,11 @@
 using namespace std; 
 #include<gtest/gtest.h>
 
-TEST(LED,location1)
+TEST(SFF,power1)
 {
 	char cbuf[128];
 	char rbuf[128];
-	sprintf(cbuf,"cat /sys/switch/led/location");
+	sprintf(cbuf,"cat /sys/switch/sff/power");
 	FILE *stream = popen(cbuf,"r");
 	fread(rbuf,sizeof(rbuf),sizeof(char),stream);
 	printf("%s",rbuf);	
